@@ -1,0 +1,38 @@
+/*
+ * Copyright (c) 2021 Nordic Semiconductor ASA
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/* This devicetree overlay file will be automatically picked by the Zephyr
+ * build system when building the sample for the nucleo_f302r8 board. It shows
+ * how the example-application can be built on sample boards already provided
+ * by Zephyr.
+ */
+
+/ {
+	aliases {
+		blink-led = &blink_led1;
+		example-sensor = &example_sensor1;
+	};
+
+	example_sensor1: example-sensor {
+		compatible = "zephyr,example-sensor";
+		input-gpios = <&gpiob_h 10 GPIO_ACTIVE_HIGH>;
+		status = "okay";
+	};
+
+	blink_led1: blink-led {
+		compatible = "blink-gpio-led";
+		led-gpios = <&gpioa_h 13 GPIO_ACTIVE_HIGH>;
+	};
+
+};
+
+/* Red Led pin is used for the example. disable the GPIO_LEDs version. */
+&user_led0_red {
+	status = "disabled";
+};
+
+&gpiob_h {
+	status = "okay";
+};

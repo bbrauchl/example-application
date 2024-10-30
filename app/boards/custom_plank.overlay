@@ -1,0 +1,8 @@
+
+/ {
+	aliases {
+		example-sensor = &example_sensor1;
+		blink-led = &blink_led1;
+	};
+
+};
